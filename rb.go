@@ -91,8 +91,8 @@ func execute(program []operation) {
 				pc = int(program[pc].operand)
 			}
 		case opJmpB:
-			if data[data_ptr] > 0 {
-				pc = int(program[pc].operand)
+			if data[data_ptr] != 0 {
+				pc = int(program[pc].operand) - 1
 			}
 		default:
 			panic("Unknown operator.")
