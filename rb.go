@@ -69,29 +69,29 @@ func compile(input string) (program []operation, err error) {
 
 func execute(program []operation) {
 	data := make([]int16, 65535)
-	var data_ptr uint16  = 0
+	var dataPtr uint16  = 0
 	reader := bufio.NewReader(os.Stdin)
 	for progCounter := 0; progCounter < len(program); progCounter++ {
 		switch program[progCounter].operator {
 		case opMvR:
-			data_ptr++
+			dataPtr++
 		case opMvL:
-			data_ptr--
+			dataPtr--
 		case opInc:
-			data[data_ptr]++
+			data[dataPtr]++
 		case opDec:
-			data[data_ptr]--
+			data[dataPtr]--
 		case opOut:
-			fmt.Printf("%c", data[data_ptr])
+			fmt.Printf("%c", data[dataPtr])
 		case opIn:
 			read_val, _ := reader.ReadByte()
-			data[data_ptr] = int16(read_val)
+			data[dataPtr] = int16(read_val)
 		case opJmpF:
-			if data[data_ptr] == 0 {
+			if data[dataPtr] == 0 {
 				progCounter = int(program[progCounter].operand)
 			}
 		case opJmpB:
-			if data[data_ptr] != 0 {
+			if data[dataPtr] != 0 {
 				progCounter = int(program[progCounter].operand) - 1
 			}
 		default:
