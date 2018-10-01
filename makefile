@@ -1,7 +1,7 @@
 all: build
 
-run: build
-	./rb ./examples/hello-world-simple.rnb
+run: 
+	go run ./... ./examples/hello-world-simple.rnb
 
 build:
 	go build src/rb.go
