@@ -29,8 +29,6 @@ func init() {
 	fileName = args[1]
 }
 
-//func compile(input string) ()
-
 func readFile() (string, error) {
 	s, err := ioutil.ReadFile(fileName)
 	return string(s), err
